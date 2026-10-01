@@ -3297,18 +3297,5 @@
     "metadataStationLabel": null,
     "metadataStationAliases": [],
     "metadataStationId": null
-  },
-  {
-    "id": "test-verify-workflow",
-    "name": "TEST - verify radiostations workflow",
-    "group": "Other stations",
-    "homepageUrl": "https://example.com/",
-    "audioUrl": "https://example.com/test.mp3",
-    "audioMode": "direct",
-    "metadataUrl": "https://example.com/test.mp3",
-    "metadataMode": "icy_stream",
-    "metadataStationLabel": null,
-    "metadataStationAliases": [],
-    "metadataStationId": null
   }
 ]
