@@ -1,0 +1,44 @@
+name: Update station catalog
+
+on:
+  schedule:
+    # Monthly on the 1st at 04:00 UTC - the closest practical approximation
+    # of "every 4 weeks" that plain cron syntax can express reliably.
+    - cron: "0 4 1 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Checkout onradio-cover-bridge (source of truth for stations.py)
+        uses: actions/checkout@v4
+        with:
+          repository: TBR-BRD/onradio-cover-bridge
+          path: source
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate stations.json
+        run: python3 generate.py source stations.json
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- stations.json; then
+            echo "No changes - station catalog is already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stations.json
+          git commit -m "Update station catalog ($(date -u +%Y-%m-%d))"
+          git push
