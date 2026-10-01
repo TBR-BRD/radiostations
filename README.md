@@ -1,4 +1,4 @@
-# OnRadio Stations
+# Radio Stations
 
 Auto-updated JSON catalog of internet radio stations, generated from
 [onradio-cover-bridge](https://github.com/TBR-BRD/onradio-cover-bridge)'s
@@ -35,7 +35,7 @@ cross-repo tokens are needed - the workflow only ever reads the other
 ## Consuming this data
 
 ```
-https://raw.githubusercontent.com/TBR-BRD/onradio-stations/main/stations.json
+https://raw.githubusercontent.com/TBR-BRD/radiostations/main/stations.json
 ```
 
 Each entry mirrors the fields of `onradio-cover-bridge`'s `Station`
