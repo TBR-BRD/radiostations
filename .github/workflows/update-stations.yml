@@ -1,9 +1,15 @@
 name: Update station catalog
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "stations_source.py"
+      - "generate.py"
   schedule:
-    # Monthly on the 1st at 04:00 UTC - the closest practical approximation
-    # of "every 4 weeks" that plain cron syntax can express reliably.
+    # Safety net in case a push-triggered run was ever missed - the 1st of
+    # every month at 04:00 UTC (the closest reliable approximation of
+    # "every 4 weeks" plain cron syntax supports).
     - cron: "0 4 1 * *"
   workflow_dispatch: {}
 
@@ -14,14 +20,8 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout this repo
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Checkout onradio-cover-bridge (source of truth for stations.py)
-        uses: actions/checkout@v4
-        with:
-          repository: TBR-BRD/onradio-cover-bridge
-          path: source
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -29,7 +29,7 @@ jobs:
           python-version: "3.12"
 
       - name: Regenerate stations.json
-        run: python3 generate.py source stations.json
+        run: python3 generate.py stations.json
 
       - name: Commit and push if changed
         run: |

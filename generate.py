@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-"""Regenerates stations.json from the onradio-cover-bridge project's
-app/stations.py (the canonical source of truth for the station catalog).
+"""Regenerates stations.json from this repo's own stations_source.py (the
+canonical, hand-authored station catalog).
 
 Usage:
-    python3 generate.py <path-to-onradio-cover-bridge-checkout> [output-path]
+    python3 generate.py [output-path]
 
-Standard library only - no dependency on the source project's own
-requirements (FastAPI, pychromecast, ...), since stations.py itself only
-uses stdlib.
+Standard library only.
 """
 from __future__ import annotations
 
@@ -48,15 +46,10 @@ def group_for(station_id: str) -> str:
 
 
 def main() -> None:
-    if len(sys.argv) < 2:
-        print("Usage: generate.py <path-to-onradio-cover-bridge-checkout> [output-path]", file=sys.stderr)
-        sys.exit(1)
+    output_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("stations.json")
 
-    source_root = Path(sys.argv[1]).resolve()
-    output_path = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("stations.json")
-
-    sys.path.insert(0, str(source_root))
-    from app.stations import STATIONS  # type: ignore[import-not-found]
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from stations_source import STATIONS  # type: ignore[import-not-found]
 
     out = []
     for s in STATIONS:
