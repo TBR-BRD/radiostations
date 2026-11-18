@@ -3702,6 +3702,45 @@
     "metadataStationId": null
   },
   {
+    "id": "beats-radio",
+    "name": "Beats Radio",
+    "group": "Beats Radio",
+    "homepageUrl": "https://www.beatsradio.de/",
+    "audioUrl": "https://live.streams.klassikradio.de/beats-radio/stream/mp3",
+    "audioMode": "direct",
+    "metadataUrl": "https://live.streams.klassikradio.de/beats-radio/stream/mp3",
+    "metadataMode": "icy_stream",
+    "metadataStationLabel": null,
+    "metadataStationAliases": [],
+    "metadataStationId": null
+  },
+  {
+    "id": "beats-radio-nu-disco",
+    "name": "Beats Radio Nu Disco",
+    "group": "Beats Radio",
+    "homepageUrl": "https://www.beatsradio.de/",
+    "audioUrl": "https://klassikr.streamabc.net/klr_qohdzgv3jpl_mzy9-mp3-192-1126592",
+    "audioMode": "direct",
+    "metadataUrl": "https://klassikr.streamabc.net/klr_qohdzgv3jpl_mzy9-mp3-192-1126592",
+    "metadataMode": "icy_stream",
+    "metadataStationLabel": null,
+    "metadataStationAliases": [],
+    "metadataStationId": null
+  },
+  {
+    "id": "beats-radio-chillout-beats",
+    "name": "Beats Radio Chillout Beats",
+    "group": "Beats Radio",
+    "homepageUrl": "https://www.beatsradio.de/",
+    "audioUrl": "https://klassikr.streamabc.net/klr-chilloutbeats-aac-128-5665488",
+    "audioMode": "direct",
+    "metadataUrl": "https://klassikr.streamabc.net/klr-chilloutbeats-aac-128-5665488",
+    "metadataMode": "icy_stream",
+    "metadataStationLabel": null,
+    "metadataStationAliases": [],
+    "metadataStationId": null
+  },
+  {
     "id": "radio-fritz",
     "name": "Radio Fritz",
     "group": "Other stations",

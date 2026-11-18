@@ -44,6 +44,8 @@ def group_for(station_id: str) -> str:
         return "ENERGY"
     if station_id.startswith("antenne-bayern-"):
         return "ANTENNE BAYERN"
+    if station_id.startswith("beats-radio"):
+        return "Beats Radio"
     return "Other stations"
 
 

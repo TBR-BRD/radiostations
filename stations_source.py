@@ -393,6 +393,38 @@ ANTENNE_STATIONS: tuple[Station, ...] = tuple(
 )
 
 
+# Beats Radio (Klassik Radio GmbH) – Streams über streamABC.
+# Titel/Cover: https://api.streamabc.net/metadata/channel/<channelkey>.json
+# (Channel-Keys: national klr_3xcmcf19meu_83wq, Nu Disco klr_qohdzgv3jpl_mzy9,
+#  Chillout Beats klr_jk3tmcvoltq_szz1); im ICY-Stream steht nur der Sendername.
+BEATS_RADIO_STATIONS: tuple[Station, ...] = (
+    Station(
+        id="beats-radio",
+        name="Beats Radio",
+        homepage_url="https://www.beatsradio.de/",
+        audio_url="https://live.streams.klassikradio.de/beats-radio/stream/mp3",
+        metadata_url="https://live.streams.klassikradio.de/beats-radio/stream/mp3",
+        metadata_mode="icy_stream",
+    ),
+    Station(
+        id="beats-radio-nu-disco",
+        name="Beats Radio Nu Disco",
+        homepage_url="https://www.beatsradio.de/",
+        audio_url="https://klassikr.streamabc.net/klr_qohdzgv3jpl_mzy9-mp3-192-1126592",
+        metadata_url="https://klassikr.streamabc.net/klr_qohdzgv3jpl_mzy9-mp3-192-1126592",
+        metadata_mode="icy_stream",
+    ),
+    Station(
+        id="beats-radio-chillout-beats",
+        name="Beats Radio Chillout Beats",
+        homepage_url="https://www.beatsradio.de/",
+        audio_url="https://klassikr.streamabc.net/klr-chilloutbeats-aac-128-5665488",
+        metadata_url="https://klassikr.streamabc.net/klr-chilloutbeats-aac-128-5665488",
+        metadata_mode="icy_stream",
+    ),
+)
+
+
 STATIONS: tuple[Station, ...] = (
     _on_station(
         station_id="on-radio",
@@ -619,6 +651,7 @@ STATIONS: tuple[Station, ...] = (
     *ABSOLUT_STATIONS,
     *ENERGY_STATIONS,
     *ANTENNE_STATIONS,
+    *BEATS_RADIO_STATIONS,
     Station(
         id="radio-fritz",
         name="Radio Fritz",
