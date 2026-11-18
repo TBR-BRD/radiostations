@@ -156,6 +156,18 @@ def _energy_station(*, suffix: str, name: str, mount: str) -> Station:
     )
 
 
+def _antenne_station(*, suffix: str, name: str, slug: str) -> Station:
+    audio_url = f"https://stream.antenne.de/{slug}/stream/mp3"
+    return Station(
+        id=f"antenne-bayern-{suffix}",
+        name=f"ANTENNE BAYERN {name}".strip(),
+        homepage_url="https://www.antenne.de/webradio",
+        audio_url=audio_url,
+        metadata_url=audio_url,
+        metadata_mode="icy_stream",
+    )
+
+
 RADIO_BOB_STATIONS: tuple[Station, ...] = tuple(
     _radio_bob_station(suffix=suffix, name=name, mount=mount)
     for suffix, name, mount in (
@@ -330,6 +342,53 @@ ENERGY_STATIONS: tuple[Station, ...] = tuple(
         ("k-pop", "K-Pop", "energy-kpop"),
         ("extravadance", "Extravadance", "energy-extravadance"),
         ("christmas-hits", "Christmas Hits", "energy-christmashits"),
+    )
+)
+
+
+ANTENNE_STATIONS: tuple[Station, ...] = tuple(
+    _antenne_station(suffix=suffix, name=name, slug=slug)
+    for suffix, name, slug in (
+        ("live", "", "antenne"),
+        ("top-40", "Top 40", "top-40"),
+        ("80er-kulthits", "80er Kulthits", "80er-kulthits"),
+        ("90er-hits", "90er Hits", "90er-hits"),
+        ("2000er-hits", "2000er Hits", "2000er-hits"),
+        ("2010er-hits", "2010er Hits", "2010er-hits"),
+        ("70er-hits", "70er Hits", "70er-hits"),
+        ("oldies-but-goldies", "Oldies but Goldies", "oldies-but-goldies"),
+        ("greatest-hits", "Greatest Hits", "greatest-hits"),
+        ("top-1000", "Top 1000", "top-1000"),
+        ("hitmix", "Hitmix", "hitmix"),
+        ("pop-xxl", "Pop XXL", "pop-xxl"),
+        ("happy-hits", "Happy Hits", "happy-hits"),
+        ("fresh", "Fresh 4 You", "fresh"),
+        ("in-the-mix", "In The Mix", "in-the-mix"),
+        ("party-hits", "Party Hits", "party-hits"),
+        ("80er-party", "80er Party", "antenne-bayern-80er-party"),
+        ("90er-party", "90er Party", "antenne-bayern-90er-party"),
+        ("80er-disco-hits", "80er Disco Hits", "antenne-bayern-80er-disco-hits"),
+        ("90er-eurodance", "90er Eurodance", "antenne-bayern-90er-eurodance"),
+        ("italo-hits", "Italo Hits", "antenne-bayern-italo-hits"),
+        ("ndw", "NDW", "antenne-bayern-ndw"),
+        ("classic-rock-live", "Classic Rock Live", "classic-rock-live"),
+        ("black-beatz", "Black Beatz", "black-beatz"),
+        ("lovesongs", "Lovesongs", "lovesongs"),
+        ("chillout", "Chillout", "chillout"),
+        ("relax", "Relax", "relax"),
+        ("coffee-music", "Coffee Music", "coffee"),
+        ("lounge", "Lounge", "lounge"),
+        ("nur-die-musik", "Nur die Musik", "nur-die-musik"),
+        ("schlagersahne", "Schlagersahne", "das-schlager-karussell"),
+        ("bayern-sound", "Bayern Sound", "bayern-sound"),
+        ("halli-galli-gaudi", "Halli Galli Gaudi", "halli-galli-gaudi"),
+        ("mallorca-party", "Mallorca Party", "mallorca-party"),
+        ("apres-ski", "Après Ski", "apres-ski"),
+        ("hits-fuer-kids", "Hits für Kids", "hits-fuer-kids"),
+        ("herbst-hits", "Herbst Hits", "herbst-hits"),
+        ("sommer-hits", "Sommer Hits", "sommer-hits"),
+        ("weihnachts-hits", "Weihnachts-Hits", "weihnachts-hits"),
+        ("bayerische-weihnacht", "Bayerische Weihnacht", "bayerische-weihnacht"),
     )
 )
 
@@ -559,6 +618,7 @@ STATIONS: tuple[Station, ...] = (
     *FFH_STATIONS,
     *ABSOLUT_STATIONS,
     *ENERGY_STATIONS,
+    *ANTENNE_STATIONS,
     Station(
         id="radio-fritz",
         name="Radio Fritz",
