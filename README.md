@@ -12,6 +12,12 @@ cached/bundled copy as an offline fallback if this repo is unreachable).
 Neither one defines the station list itself anymore - **this repo is the
 single source of truth**.
 
+<br>
+<a href="https://www.buymeacoffee.com/thoralf.brandt" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
+</a>
+<br>
+
 ## Editing the station list
 
 Edit [`stations_source.py`](stations_source.py) - a plain Python file
